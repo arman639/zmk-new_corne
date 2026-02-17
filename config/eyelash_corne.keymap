@@ -91,33 +91,6 @@
             lazy;
             quick-release;
         };
-
-        super_arrow_behavior: super_arrow_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SUPER_ARROW_BEHAVIOR";
-            bindings = <&kp>, <&move_arrow_10_macro>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
-        super_arrow_x2_behavior: super_arrow_x2_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SUPER_ARROW_X2_BEHAVIOR";
-            bindings = <&kp>, <&move_arrow_20_macro>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
-        super_arrow_xhalf_behavior: super_arrow_xhalf_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SUPER_ARROW_XHALF_BEHAVIOR";
-            bindings = <&kp>, <&move_arrow_5_macro>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
     };
 
     macros {
@@ -128,23 +101,7 @@
                 <&macro_press>,
                 <&kp LALT>,
                 <&macro_tap>,
-                <&kp TAB &to 3>;
-        };
-
-        select_line_macro: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_tap>,
-                <&kp HOME>,
-                <&macro_press>,
-                <&kp LEFT_SHIFT>,
-                <&macro_tap>,
-                <&kp END>,
-                <&macro_release>,
-                <&kp LEFT_SHIFT>;
-
-            label = "NEW_MACRO";
+                <&kp TAB &to 2>;
         };
 
         mo_release_alt_macro: alt_2_macro {
@@ -152,7 +109,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_tap>,
-                <&to 2>,
+                <&to 1>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&kp LEFT_ALT>,
@@ -178,7 +135,7 @@
         cancel_custom_layer_macro: cancel_custom_activation {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap>, <&to 0>, <&macro_tap>, <&sl 5>;
+            bindings = <&macro_tap>, <&to 0>, <&macro_tap>, <&sl 4>;
 
             label = "CANCEL_CUSTOM_ACTIVATION";
         };
@@ -220,58 +177,21 @@
             label = "hrm_hold_macro";
         };
 
-        delete_line_macro: delete_line_macro {
+        gui_macro: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_tap>,
-                <&kp HOME>,
                 <&macro_press>,
-                <&kp LEFT_SHIFT>,
-                <&macro_tap>,
-                <&kp END>,
+                <&mo 9>,
+                <&macro_press>,
+                <&kp LEFT_GUI>,
+                <&macro_pause_for_release>,
                 <&macro_release>,
-                <&kp LEFT_SHIFT>,
-                <&macro_tap>,
-                <&kp BACKSPACE &kp BACKSPACE>;
+                <&kp LEFT_GUI>,
+                <&macro_release>,
+                <&mo 9>;
 
-            label = "DELETE_LINE_MACRO";
-        };
-
-        move_arrow_10_macro: move_arrow_20_macro {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat>;
-
-            label = "MOVE_ARROW_20_MACRO";
-            wait-ms = <5>;
-            tap-ms = <5>;
-        };
-
-        move_arrow_20_macro: move_arrow_10_macro {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat &key_repeat>;
-
-            label = "MOVE_ARROW_10_MACRO";
-            wait-ms = <5>;
-            tap-ms = <5>;
-        };
-
-        move_arrow_5_macro: move_arrow_5_macro {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_tap>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER &key_repeat &key_repeat &key_repeat &key_repeat>;
-
-            label = "MOVE_ARROW_5_MACRO";
-            wait-ms = <5>;
-            tap-ms = <5>;
+            label = "NEW_MACRO";
         };
     };
 
@@ -295,53 +215,53 @@
         unlock_combo {
             bindings = <&to 0>;
             key-positions = <1 5>;
-            layers = <7>;
+            layers = <6>;
         };
 
         lock_combo {
-            bindings = <&to 7>;
+            bindings = <&to 6>;
             key-positions = <1 5>;
             layers = <0>;
         };
 
         numpad_osl_activator {
-            bindings = <&sl 6>;
+            bindings = <&sl 5>;
             key-positions = <38 39>;
-            layers = <4 2>;
+            layers = <3 1>;
         };
 
         func_osl_activator {
-            bindings = <&sl 5>;
+            bindings = <&sl 4>;
             key-positions = <30 31>;
-            layers = <4 2>;
+            layers = <3 1>;
         };
 
         boot_left {
             bindings = <&bootloader>;
             key-positions = <2 4>;
-            layers = <5>;
+            layers = <4>;
         };
 
         boot_right {
             bindings = <&bootloader>;
             key-positions = <8 10>;
-            layers = <6>;
+            layers = <5>;
         };
 
         reset_left {
             bindings = <&sys_reset>;
             key-positions = <30 32>;
-            layers = <5>;
+            layers = <4>;
         };
 
         reset_right {
             bindings = <&sys_reset>;
             key-positions = <39 37>;
-            layers = <6>;
+            layers = <5>;
         };
 
         activate_gaming {
-            bindings = <&to 1>;
+            bindings = <&to 13>;
             key-positions = <14 18>;
             layers = <0>;
         };
@@ -349,7 +269,7 @@
         deact_gaming_layer {
             bindings = <&to 0>;
             key-positions = <14 18>;
-            layers = <1>;
+            layers = <13>;
         };
     };
 
@@ -359,22 +279,13 @@
         base_layer {
             display-name = "QWERTY";
             bindings = <
-&lt 10 ESCAPE   &kp Q  &kp W  &kp E     &kp R                          &kp T                                 &mmv MOVE_UP                     &kp Y       &kp U      &kp I      &kp O    &kp P     &kp GRAVE
+&lt 9 ESCAPE    &kp Q  &kp W  &kp E     &kp R                          &kp T                                 &mmv MOVE_UP                     &kp Y       &kp U      &kp I      &kp O    &kp P     &kp GRAVE
 &kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F                          &kp G                 &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp H       &kp J      &kp K      &kp L    &kp SEMI  &kp SQT
 &kp LCTRL       &kp Z  &kp X  &kp C     &kp V                          &kp B        &none                    &mmv MOVE_DOWN                   &kp N       &kp M      &kp COMMA  &kp DOT  &kp FSLH  &mkp LCLK
-                              &kp LGUI  &layer_tap_release_alttab A 5  &lt 4 SPACE                                                            &sk RSHIFT  &oslr 3 6  &kp RALT
+                              &kp LGUI  &layer_tap_release_alttab A 4  &lt 3 SPACE                                                            &sk RSHIFT  &oslr 2 5  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
-        };
-
-        gaming_toggle {
-            bindings = <
-&kp ESCAPE  &trans  &trans  &trans  &trans  &trans                       &trans          &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans      &trans  &trans  &trans  &trans  &trans     &trans            &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                            &trans  &mo 16  &kp SPACE                                    &trans  &none   &trans
-            >;
         };
 
         sym_layer {
@@ -383,7 +294,7 @@
 &super_alttab_macro  &none          &none             &kp LG(PAGE_UP)    &none     &none                                &mmv MOVE_UP                     &none      &none             &none      &none           &none            &trans
 &esc_ignore_mods     &kp EXCL       &kp AT            &kp HASH           &kp DLLR  &kp PRCNT            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp CARET  &kp AMPS          &kp ASTRK  &kp LPAR        &kp RPAR         &kp TILDE
 &trans               &kp BACKSLASH  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PIPE  &kp ENTER  &trans                    &mmv MOVE_DOWN                   &kp PLUS   &kp MINUS         &kp EQUAL  &kp LEFT_BRACE  &kp RIGHT_BRACE  &trans
-                                                      &trans             &trans    &kp SPACE                                                             &trans     &lt 3 UNDERSCORE  &trans
+                                                      &trans             &trans    &kp SPACE                                                             &trans     &lt 2 UNDERSCORE  &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -392,10 +303,10 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&kp TAB     &none         &mo 14              &mo 13      &none      &none                                    &mmv MOVE_UP                     &kp LC(Y)           &kp HOME   &kp UP     &kp END    &kp DELETE            &none
-&kp ESCAPE  &kp LEFT_GUI  &mt LALT LC(LS(S))  &kp RSHIFT  &kp LCTRL  &kp LG(T)                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp TAB             &kp LEFT   &kp DOWN   &kp RIGHT  &kp BSPC              &msc SCRL_UP
-&trans      &kp LC(Z)     &kp LC(X)           &kp LC(C)   &kp LC(V)  &none      &kp C_MUTE                    &mmv MOVE_DOWN                   &delete_line_macro  &kp PG_UP  &kp PG_DN  &kp RET    &comment_ignore_mods  &msc SCRL_DOWN
-                                              &trans      &mo 12     &trans                                                                    &lt 2 UNDERSCORE    &trans     &trans
+&kp TAB     &none         &mo 0               &mo 0       &none      &none                                    &mmv MOVE_UP                     &kp LC(Y)         &kp HOME   &kp UP     &kp END    &kp DELETE            &none
+&kp ESCAPE  &kp LEFT_GUI  &mt LALT LC(LS(S))  &kp RSHIFT  &kp LCTRL  &kp LG(T)                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp TAB           &kp LEFT   &kp DOWN   &kp RIGHT  &kp BSPC              &msc SCRL_UP
+&trans      &kp LC(Z)     &kp LC(X)           &kp LC(C)   &kp LC(V)  &none      &kp C_MUTE                    &mmv MOVE_DOWN                   &trans            &kp PG_UP  &kp PG_DN  &kp RET    &comment_ignore_mods  &msc SCRL_DOWN
+                                              &trans      &mo 0      &trans                                                                    &lt 1 UNDERSCORE  &trans     &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -404,10 +315,10 @@
         fn_num_layer {
             display-name = "Fn-Num";
             bindings = <
-&trans            &kp F3  &kp F4    &kp F5    &kp F6      &kp F7                            &mmv MOVE_UP                     &kp KP_MULTIPLY  &kp KP_N7  &kp KP_N8   &kp KP_N9  &kp KP_MINUS   &kp KP_NUMLOCK
-&kp LEFT_SHIFT    &kp F2  &kp F10   &kp F11   &kp F12     &kp F8            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none            &kp KP_N4  &kp KP_N5   &kp KP_N6  &kp BSPC       &kp ESCAPE
-&kp LEFT_CONTROL  &kp F1  &mkp MB4  &mkp MB5  &kp LA(F5)  &kp F9  &trans                    &mmv MOVE_DOWN                   &kp KP_PLUS      &kp KP_N1  &kp KP_N2   &kp KP_N3  &kp KP_DIVIDE  &kp SCROLLLOCK
-                                    &trans    &trans      &trans                                                             &kp KP_ENTER     &kp N0     &kp KP_DOT
+&trans            &kp F3  &kp F4    &kp F5    &kp F6      &kp F7                            &mmv MOVE_UP                     &kp KP_MULTIPLY  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp KP_MINUS   &kp KP_NUMLOCK
+&kp LEFT_SHIFT    &kp F2  &kp F10   &kp F11   &kp F12     &kp F8            &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none            &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp BSPC       &kp ESCAPE
+&kp LEFT_CONTROL  &kp F1  &mkp MB4  &mkp MB5  &kp LA(F5)  &kp F9  &trans                    &mmv MOVE_DOWN                   &kp KP_PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_DIVIDE  &kp SCROLLLOCK
+                                    &trans    &trans      &trans                                                             &kp KP_ENTER     &kp N0        &kp KP_DOT
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -416,10 +327,10 @@
         osl_l_layer {
             display-name = "OSL L";
             bindings = <
-&trans         &trans                            &sl 11                   &sl 9                      &trans                     &none                                      &mmv MOVE_UP                     &trans  &studio_unlock  &trans  &trans  &trans  &trans
-&to 0          &hrm_hold_macro LS(LEFT_CONTROL)  &hrm_behavior LALT LALT  &hrm_behavior LSHFT LSHFT  &hrm_behavior LCTRL LCTRL  &sl 15                     &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &trans  &trans          &trans  &trans  &trans  &trans
+&trans         &trans                            &sl 10                   &sl 8                      &trans                     &none                                      &mmv MOVE_UP                     &trans  &studio_unlock  &trans  &trans  &trans  &trans
+&to 0          &hrm_hold_macro LS(LEFT_CONTROL)  &hrm_behavior LALT LALT  &hrm_behavior LSHFT LSHFT  &hrm_behavior LCTRL LCTRL  &sl 11                     &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &trans  &trans          &trans  &trans  &trans  &trans
 &kp RC(RSHFT)  &kp LC(HOME)                      &kp LC(END)              &none                      &none                      &kp PAUSE_BREAK  &trans                    &mmv MOVE_DOWN                   &trans  &trans          &trans  &trans  &trans  &trans
-                                                                          &trans                     &trans                     &trans                                                                      &trans  &trans          &trans
+                                                                          &trans                     &trans                     &gui_macro                                                                  &trans  &trans          &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -469,49 +380,22 @@
 
         multimedia_layer {
             bindings = <
-&none  &kp C_REWIND  &kp C_PLAY_PAUSE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_MUTE                  &none         &none       &none  &none  &none  &none  &none
-&none  &none         &none             &none              &none            &none                &none  &none  &none  &none       &none  &none  &none  &none  &none
-&none  &none         &none             &none              &none            &none       &none           &none         &none       &none  &none  &none  &none  &none
-                                       &none              &none            &kp SPACE                                 &kp RETURN  &none  &none
+&none  &none  &none           &kp UP_ARROW    &none            &none                  &none         &none       &none  &none  &none  &none  &none
+&none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none           &none  &none  &none  &none       &none  &none  &none  &none  &none
+&none  &none  &none           &none           &none            &none  &none           &none         &none       &none  &none  &none  &none  &none
+                              &none           &none            &none                                &kp RETURN  &none  &none
             >;
         };
 
         windows_layer {
             bindings = <
-&none  &kp LA(F4)       &kp LG(LEFT)   &kp LG(UP_ARROW)  &kp LG(RIGHT)  &none                  &none         &none  &none  &none  &none  &none  &none
-&none  &kp PRINTSCREEN  &kp LG(LS(S))  &none             &none          &none           &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none            &none          &none             &none          &none  &none           &none         &none  &none  &none  &none  &none  &none
-                                       &none             &none          &none                                &none  &none  &none
+&none  &kp LA(F4)       &none          &kp LG(LEFT_ARROW)  &kp LG(RIGHT)     &none                  &none         &none  &none  &none  &none  &none  &none
+&none  &kp PRINTSCREEN  &kp LG(LS(S))  &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)  &none           &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none            &none          &none               &none             &none  &none           &none         &none  &none  &none  &none  &none  &none
+                                       &none               &none             &none                                &none  &none  &none
             >;
 
             label = "win_layer";
-        };
-
-        super_nav10_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans  &trans                                          &super_arrow_behavior UP_ARROW UP_ARROW      &trans                                            &trans              &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &super_arrow_x2_behavior LEFT_ARROW LEFT_ARROW  &super_arrow_behavior DOWN_ARROW DOWN_ARROW  &super_arrow_x2_behavior RIGHT_ARROW RIGHT_ARROW  &delete_line_macro  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans                                          &trans                                       &trans                                            &trans              &trans
-                        &trans  &trans  &trans                                    &trans  &trans                                          &trans
-            >;
-        };
-
-        super_nav20_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans  &trans                                          &super_arrow_x2_behavior UP_ARROW UP_ARROW      &trans                                            &trans              &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &super_arrow_x2_behavior LEFT_ARROW LEFT_ARROW  &super_arrow_x2_behavior DOWN_ARROW DOWN_ARROW  &super_arrow_x2_behavior RIGHT_ARROW RIGHT_ARROW  &delete_line_macro  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans                                          &trans                                          &trans                                            &trans              &trans
-                        &trans  &trans  &trans                                    &trans  &trans                                          &trans
-            >;
-        };
-
-        super_nav5_layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans  &trans                                          &super_arrow_xhalf_behavior UP_ARROW UP_ARROW      &trans                                            &trans              &trans
-&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &super_arrow_x2_behavior LEFT_ARROW LEFT_ARROW  &super_arrow_xhalf_behavior DOWN_ARROW DOWN_ARROW  &super_arrow_x2_behavior RIGHT_ARROW RIGHT_ARROW  &delete_line_macro  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans                                          &trans                                             &trans                                            &trans              &trans
-                        &trans  &trans  &trans                                    &trans  &trans                                          &trans
-            >;
         };
 
         Toggle_Layer {
@@ -533,14 +417,23 @@
                                &trans        &trans        &trans                                          &trans  &trans  &trans
             >;
         };
+
+        gaming_toggle {
+            bindings = <
+&kp ESCAPE  &trans  &trans  &trans  &trans  &trans                       &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans  &trans  &trans  &trans  &trans     &trans            &trans          &trans  &trans  &trans  &trans  &trans  &trans
+                            &trans  &mo 12  &kp SPACE                                    &trans  &none   &trans
+            >;
+        };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
         mouselayer {
-            if-layers = <3 2>;
-            then-layer = <8>;
+            if-layers = <2 1>;
+            then-layer = <7>;
         };
     };
 };
